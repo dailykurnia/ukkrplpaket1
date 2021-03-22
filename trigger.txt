@@ -1,0 +1,14 @@
+Membuat trigger di tabel pembayaran di phpmyadmin:
+1. Pada tabel pembayaran, klik bagian triggers. kemudian klik add trigger
+2. isikan seperti berikut:
+	Trigger name: update_total_spp
+	table: pembayaran
+	time: after
+	event: insert
+	defenition:
+
+	BEGIN
+	UPDATE spp SET nominal= nominal+ NEW.jumlah_bayar WHERE id_spp= 	NEW.id_spp;
+	END
+
+	definer: root@localhost
